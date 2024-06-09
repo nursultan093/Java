@@ -1,0 +1,30 @@
+package Tasks.lab1;
+
+import java.util.*;
+
+public class Task1 {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 2, 2, 3, 3, 1};
+        List<Integer> result = removeOddOccurrences(numbers);
+        System.out.println("Результат: " + result);
+    }
+
+    public static List<Integer> removeOddOccurrences(int[] numbers) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+        List<Integer> result = new ArrayList<>();
+
+        // Подсчет количества повторений каждого числа
+        for (int num : numbers) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        // Добавление чисел с четным количеством повторений в результат
+        for (int num : numbers) {
+            if (countMap.get(num) % 2 == 0) {
+                result.add(num);
+            }
+        }
+
+        return result;
+    }
+}
